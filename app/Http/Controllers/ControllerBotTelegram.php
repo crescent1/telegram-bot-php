@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ControllerBotTelegram extends Controller
 {
@@ -16,6 +17,8 @@ class ControllerBotTelegram extends Controller
     public function webhook(Request $request)
     {
         $message = $request->getContent();
+
+        // Log::info($message);
 
         return response('OK', 200);
 
