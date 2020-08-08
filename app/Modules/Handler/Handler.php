@@ -16,11 +16,21 @@ class Handler
      */
     public function handle($message)
     {
+        /**
+         * decode pesan dari user
+         */
         $result = BotTelegramMessages::decodeMessage($message);
+
+        /**
+         * cek type pesan dari user
+         */
         $type = BotTelegramMessages::messageType($result);
 
         if($type === 'MESSAGE'){
 
+            /**
+             * cek message dari user apa hanya berupa text atau gambar, dokumen dll
+             */
             $cek = BotTelegramMessages::messageCek($result);
 
             if($cek === 'MESSAGE'){
