@@ -27,6 +27,8 @@ class ControllerBotTelegram extends Controller
 
         /**
          * olah data yang didapat sesuai kebutuhan
+         *
+         * @var \App\Modules\Handler\Handler $handle
          */
         $handle = new Handler();
         $handle->handle($message);

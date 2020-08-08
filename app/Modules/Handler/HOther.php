@@ -2,10 +2,10 @@
 
 namespace App\Modules\Handler;
 
-class HCallbackQuery
+class HOther
 {
     /**
-     * olah data callbackQuery
+     * olah data other (belum disediakan)
      *
      * @param array $result
      * @return void
