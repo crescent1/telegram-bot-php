@@ -35,10 +35,20 @@ class BotTelegram
 
         ]);
 
+        /**
+         * dapatkan data dari request ke bot API
+         * @var string $result
+         */
         $result = $response->getBody()->getContents();
-        $result = BotTelegramMessages::decodeMessage($result);
 
-        return $result;
+        /**
+         * json_dcode data
+         *
+         * @var array $data
+         */
+        $data = BTMessages::decodeMessage($result);
+
+        return $data;
 
     }
 
