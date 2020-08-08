@@ -10,7 +10,7 @@ class HCallbackQuery
      * @param array $result
      * @return void
      */
-    public function handle($result)
+    public function handle(array $result)
     {
 
     }

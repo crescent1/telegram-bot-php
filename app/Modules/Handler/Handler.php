@@ -14,7 +14,7 @@ class Handler
      * @param string $message
      * @return void
      */
-    public function handle($message)
+    public function handle(string $message)
     {
         /**
          * decode pesan dari user
