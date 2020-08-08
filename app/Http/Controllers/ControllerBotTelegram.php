@@ -17,8 +17,11 @@ class ControllerBotTelegram extends Controller
      */
     public function webhook(Request $request)
     {
+
         /**
          * dapatkan message dari telegram bot (semua data dari telegram bot dalam bentuk JSON)
+         *
+         * @var string $message
          */
         $message = $request->getContent();
 
