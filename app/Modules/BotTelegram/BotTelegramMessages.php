@@ -39,4 +39,22 @@ class BotTelegramMessages
         return $data;
 
     }
+
+    /**
+     * cek tipe data message. apa hanya berisi text, gambar, atau dokumen
+     *
+     * @param array $result
+     * @return string
+     */
+    public static function messageCek($result)
+    {
+        $data = 'OTHER';
+
+        if (array_key_exists('text', $result['message'])){
+
+            $data = 'MESSAGE';
+        }
+
+        return $data;
+    }
 }
