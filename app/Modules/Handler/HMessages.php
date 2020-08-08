@@ -6,6 +6,13 @@ use Illuminate\Support\Facades\Log;
 
 class HMessages
 {
+    private $text;
+
+    public function __construct()
+    {
+
+
+    }
     /**
      * olah data message
      *
