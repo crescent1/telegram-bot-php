@@ -24,7 +24,7 @@ class BotTelegram
     /**
      * Setting untuk mengaktifkan fungsi webhook pada telegram bot
      *
-     * @return mixed
+     * @return array
      */
     public function setWebhook()
     {

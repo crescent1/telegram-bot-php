@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\Handler\Handler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -16,9 +17,17 @@ class ControllerBotTelegram extends Controller
      */
     public function webhook(Request $request)
     {
+        /**
+         * dapatkan message dari telegram bot (semua data dari telegram bot dalam bentuk JSON)
+         */
         $message = $request->getContent();
 
-        // Log::info($message);
+        /**
+         * olah data yang didapat sesuai kebutuhan
+         */
+        $handle = new Handler();
+        $handle->handle($message);
+
 
         return response('OK', 200);
 
