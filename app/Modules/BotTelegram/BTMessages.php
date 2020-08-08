@@ -2,7 +2,7 @@
 
 namespace App\Modules\BotTelegram;
 
-class BotTelegramMessages
+class BTMessages
 {
     /**
      * json decode $message dari telegram bot

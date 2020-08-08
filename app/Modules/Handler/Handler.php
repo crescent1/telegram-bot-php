@@ -2,7 +2,7 @@
 
 namespace App\Modules\Handler;
 
-use App\Modules\BotTelegram\BotTelegramMessages;
+use App\Modules\BotTelegram\BTMessages;
 
 class Handler
 {
@@ -21,14 +21,14 @@ class Handler
          *
          * @var array $result
          */
-        $result = BotTelegramMessages::decodeMessage($message);
+        $result = BTMessages::decodeMessage($message);
 
         /**
          * cek type pesan dari user
          *
          * @var string $type
          */
-        $type = BotTelegramMessages::messageType($result);
+        $type = BTMessages::messageType($result);
         if($type === 'MESSAGE'){
 
             /**
@@ -36,7 +36,7 @@ class Handler
              *
              * @var string $cek
              */
-            $cek = BotTelegramMessages::messageCek($result);
+            $cek = BTMessages::messageCek($result);
             if($cek === 'MESSAGE'){
 
                 /**

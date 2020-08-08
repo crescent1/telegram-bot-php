@@ -2,6 +2,8 @@
 
 namespace App\Modules\Handler;
 
+use Illuminate\Support\Facades\Log;
+
 class HMessages
 {
     /**
@@ -12,6 +14,7 @@ class HMessages
      */
     public function handle(array $result)
     {
+        // Log::info(json_encode($result));
 
     }
 
