@@ -52,4 +52,19 @@ class BotTelegram
 
     }
 
+    /**
+     * kirim pesan dengan method sendMessage
+     *
+     * @param array $sendMessage
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
+    public function sendMessage($sendMessage)
+    {
+        $this->http->post('sendMessage', [
+            'form_params' => $sendMessage
+        ]);
+
+        return response('Ok', 200);
+    }
+
 }

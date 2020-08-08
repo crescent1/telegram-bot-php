@@ -57,4 +57,28 @@ class BTMessages
 
         return $data;
     }
+
+    /**
+     * Siapkan data yang akan dikirim oleh bot ke user sesuai parameter yang dibutuhkan
+     *
+     * @param mixed $data
+     * @return array
+     */
+    public static function textMessage($data)
+    {
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'text' => $data['text'],
+            'parse_mode' => 'HTML',
+            'disable_web_page_preview' => true,
+        ];
+
+        if ($data['replyMarkup']) {
+
+            $pesan['reply_markup'] = $data['replyMarkup'];
+        }
+
+        return $pesan;
+
+    }
 }

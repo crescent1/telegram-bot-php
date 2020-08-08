@@ -2,7 +2,7 @@
 
 namespace App\Modules\Items;
 
-class Emoji
+class Text
 {
     /**
      * teks pembukaan
