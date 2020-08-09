@@ -16,4 +16,16 @@ class Text
         return $text;
     }
 
+    /**
+     * teks untuk inline keyboard
+     *
+     * @return string
+     */
+    public function inlineKeyboardText()
+    {
+        $text = 'Ini contoh inline keyboard!';
+
+        return $text;
+    }
+
 }

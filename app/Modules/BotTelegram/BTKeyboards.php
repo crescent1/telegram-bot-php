@@ -26,7 +26,7 @@ class BTKeyboards
         $buttons = [
             [
                 [
-                    'text' => 'CALLBACK',
+                    'text' => 'INLINEKEYBOARD',
                 ],
                 [
                     'text' => 'TEST',
@@ -54,6 +54,58 @@ class BTKeyboards
 
         return $keyboard;
 
+    }
+
+    /**
+     * menggunakan inlineKeyboard
+     *
+     * @return string
+     */
+    public static function inlineKeyboardMarkup()
+    {
+        /**
+         * atur tampilan dan fungsi tombol sesuai kebutuhan
+         *
+         * @var array
+         */
+        $buttons = [
+            [
+                [
+                    'text' => 'TEST ',
+                    'callback_data' => 'test'
+
+                ],
+                [
+                    'text' =>  'TEST',
+                    'callback_data' => 'test'
+                ],
+            ],
+            [
+                [
+                    'text' => 'BACK',
+                    'callback_data' => 'back'
+                ],
+
+            ],
+        ];
+
+        /**
+         * tambahkan parameter sesuai kebutuhan, kecuali yang wajib diisi
+         *
+         * @var mixed $inlineKeyboardMarkup
+         */
+        $inlineKeyboardMarkup = [
+            'inline_keyboard' => $buttons,
+        ];
+
+        /**
+         * jadikan data dalam bentuk JSON
+         *
+         * @var string $keyboard
+         */
+        $keyboard = json_encode($inlineKeyboardMarkup);
+
+        return $keyboard;
     }
 
 }

@@ -94,6 +94,38 @@ class HMessages
 
                 break;
 
+            case 'INLINEKEYBOARD':
+
+                /**
+                 * siapkan text inlineKeyboard
+                 */
+                $text = $this->text->inlineKeyboardText();
+
+                /**
+                 * siapkan inline Keyboard
+                 */
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkup();
+
+                /**
+                 * @var mixed $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'text' => $text,
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                /**
+                 * isi data pada setiap parameter yang dibutuhkan
+                 */
+                $sendMessage = BTMessages::textMessage($data);
+
+                /**
+                 * bot membalas pesan ke user
+                 */
+                $this->botTelegram->sendMessage($sendMessage);
+                break;
+
             default:
                 # code...
                 break;
