@@ -29,6 +29,18 @@ class Text
     }
 
     /**
+     * teks untuk remove keyboard
+     *
+     * @return string
+     */
+    public function removeKeyboardText()
+    {
+        $text = 'Keyboard berhasil dihapus, gunakan perintah /start untuk mulai!';
+
+        return $text;
+    }
+
+    /**
      * teks untuk message yang tidak teridentifikasi
      *
      * @return string

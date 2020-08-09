@@ -29,7 +29,7 @@ class BTKeyboards
                     'text' => 'INLINEKEYBOARD',
                 ],
                 [
-                    'text' => 'TEST',
+                    'text' => 'REMOVE',
                 ],
             ],
         ];
@@ -104,6 +104,25 @@ class BTKeyboards
          * @var string $keyboard
          */
         $keyboard = json_encode($inlineKeyboardMarkup);
+
+        return $keyboard;
+    }
+
+    /**
+     * remove keyboard terbaru yang ditampilkan bot
+     *
+     * @return string
+     */
+    public static function replyKeyboardRemove()
+    {
+        $replyKeyboardRemove = [
+            'remove_keyboard' => true,
+        ];
+
+        /**
+         * @var string $keyboard
+         */
+        $keyboard = json_encode($replyKeyboardRemove);
 
         return $keyboard;
     }
