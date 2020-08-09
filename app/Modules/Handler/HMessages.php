@@ -140,15 +140,15 @@ class HMessages
 
                     $posisi = $data->posisi;
 
-                   switch ($posisi) {
-                       case 'value':
-                           # code...
-                           break;
+                    switch ($posisi) {
+                        case 'value':
+                            # code...
+                            break;
 
-                       default:
-                           # code...
-                           break;
-                   }
+                        default:
+                            # code...
+                            break;
+                    }
 
                 } else {
 
