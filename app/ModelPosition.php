@@ -13,4 +13,9 @@ class ModelPosition extends Model
      */
     protected $table = 'message_position';
 
+    protected $fillable = [
+        'chat_id',
+        'posisi'
+    ];
+
 }

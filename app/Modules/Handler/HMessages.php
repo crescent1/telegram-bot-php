@@ -7,7 +7,6 @@ use App\Modules\BotTelegram\BotTelegram;
 use App\Modules\BotTelegram\BTKeyboards;
 use App\Modules\BotTelegram\BTMessages;
 use App\Modules\Items\Text;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 
 class HMessages
@@ -130,7 +129,17 @@ class HMessages
                 break;
 
             default:
-                $position = '';
+                $position = new ModelPosition();
+                $position->chat_id = $chatID;
+                $position->posisi = $message;
+                $position->save();
+
+                ModelPosition::updateOrcreate([
+                    'chat_id' => $chatID
+                ], [
+                    'posisi' => $message
+                ]);
+                break;
         }
 
 
