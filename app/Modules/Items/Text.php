@@ -28,4 +28,18 @@ class Text
         return $text;
     }
 
+    /**
+     * teks untuk message yang tidak teridentifikasi
+     *
+     * @return string
+     */
+    public function otherText()
+    {
+        $text = 'Pesan tidak bisa di identifikasi, silahkan gunakan perintah yang telah disediakan atau gunakan tombol!';
+
+        return $text;
+    }
+
+
+
 }

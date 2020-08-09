@@ -129,16 +129,47 @@ class HMessages
                 break;
 
             default:
-                $position = new ModelPosition();
-                $position->chat_id = $chatID;
-                $position->posisi = $message;
-                $position->save();
 
-                ModelPosition::updateOrcreate([
-                    'chat_id' => $chatID
-                ], [
-                    'posisi' => $message
-                ]);
+
+                /**
+                 * @var object $data
+                 */
+                $data = ModelPosition::whereChatId($chatID)->first();
+
+                if($data) {
+
+                    $posisi = $data->posisi;
+
+                   switch ($posisi) {
+                       case 'value':
+                           # code...
+                           break;
+
+                       default:
+                           # code...
+                           break;
+                   }
+
+                } else {
+
+                    $text = $this->text->otherText();
+                    $replyMarkup = BTKeyboards::replyKeyboardMarkup();
+
+                    /**
+                     * @var mixed $data
+                     */
+                    $data = [
+                        'chatID' => $chatID,
+                        'text' => $text,
+                        'replyMarkup' => $replyMarkup,
+                    ];
+
+                    $sendMessage = BTMessages::textMessage($data);
+                    $this->botTelegram->sendMessage($sendMessage);
+
+
+                }
+
                 break;
         }
 
