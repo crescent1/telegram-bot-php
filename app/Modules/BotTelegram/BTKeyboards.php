@@ -16,7 +16,7 @@ class BTKeyboards
 
      * @return string
      */
-    public static function mainKeyboard()
+    public static function replyKeyboardMarkup()
     {
         /**
          * atur tampilan dan fungsi tombol sesuai kebutuhan

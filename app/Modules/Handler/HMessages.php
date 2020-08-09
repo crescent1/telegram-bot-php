@@ -71,7 +71,7 @@ class HMessages
                 /**
                  * siapkan keyboard yang akan dikirim bot
                  */
-                $replyMarkup = BTKeyboards::mainKeyboard();
+                $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
                 /**
                  * @var mixed $data
