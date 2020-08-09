@@ -63,7 +63,14 @@ class HMessages
         switch ($message) {
             case '/start':
 
+                /**
+                 * siapkan text yang akan dikirim bot
+                 */
                 $text = $this->text->welcome();
+
+                /**
+                 * siapkan keyboard yang akan dikirim bot
+                 */
                 $replyMarkup = BTKeyboards::mainKeyboard();
 
                 /**
@@ -75,7 +82,14 @@ class HMessages
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * isi data pada setiap parameter yang dibutuhkan
+                 */
                 $sendMessage = BTMessages::textMessage($data);
+
+                /**
+                 * bot membalas pesan ke user
+                 */
                 $this->botTelegram->sendMessage($sendMessage);
 
                 break;

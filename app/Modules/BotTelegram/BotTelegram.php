@@ -58,7 +58,7 @@ class BotTelegram
      * @param array $sendMessage
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function sendMessage($sendMessage)
+    public function sendMessage(array $sendMessage)
     {
         $this->http->post('sendMessage', [
             'form_params' => $sendMessage
