@@ -9,7 +9,7 @@ class Text
      *
      * @return string
      */
-    public function welcome()
+    public static function welcome()
     {
         $text = 'Assalamualaikum, Selamat Datang!';
 
@@ -21,7 +21,7 @@ class Text
      *
      * @return string
      */
-    public function inlineKeyboardText()
+    public static function inlineKeyboardText()
     {
         $text = 'Ini contoh inline keyboard!';
 
@@ -33,7 +33,7 @@ class Text
      *
      * @return string
      */
-    public function removeKeyboardText()
+    public static function removeKeyboardText()
     {
         $text = 'Keyboard berhasil dihapus, gunakan perintah /start untuk mulai!';
 
@@ -45,11 +45,27 @@ class Text
      *
      * @return string
      */
-    public function otherText()
+    public static function otherText()
     {
         $text = 'Pesan tidak bisa di identifikasi, silahkan gunakan perintah yang telah disediakan atau gunakan tombol!';
 
         return $text;
+    }
+
+    /**
+     * siapkan text dan photo
+     *
+     * @return array
+     */
+    public static function textPhoto()
+    {
+        $text = 'Ini contoh Caption!';
+        $photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRy9LVpjaxOhg1zmVLWeBk5pWBfftKJOm1N1w&usqp=CAU';
+
+        return [
+            'text' => $text,
+            'photo' => $photo,
+        ];
     }
 
 

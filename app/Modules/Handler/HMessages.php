@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 class HMessages
 {
     /**
-     * set text
+     * set text (not used yet)
      *
      * @var \App\Modules\Items\Text $text
      */
@@ -68,7 +68,7 @@ class HMessages
                 /**
                  * siapkan text yang akan dikirim bot
                  */
-                $text = $this->text->welcome();
+                $text = Text::welcome();
 
                 /**
                  * siapkan keyboard yang akan dikirim bot
@@ -101,7 +101,7 @@ class HMessages
                 /**
                  * siapkan text inlineKeyboard
                  */
-                $text = $this->text->inlineKeyboardText();
+                $text = Text::inlineKeyboardText();
 
                 /**
                  * siapkan inline Keyboard
@@ -133,7 +133,7 @@ class HMessages
                 /**
                  * siapkan text remove
                  */
-                $text = $this->text->removeKeyboardText();
+                $text = Text::removeKeyboardText();
 
                 /**
                  * siapkan remve Keyboard
@@ -158,6 +158,27 @@ class HMessages
                  * bot membalas pesan ke user
                  */
                 $this->botTelegram->sendMessage($sendMessage);
+                break;
+
+            case 'PHOTO' :
+
+                $text = Text::textPhoto();
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkup();
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'photo' => $text['photo'],
+                    'text' => $text['text'],
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $sendPhoto = BTMessages::textPhoto($data);
+                $this->botTelegram->sendPhoto($sendPhoto);
+
+
                 break;
 
             default:

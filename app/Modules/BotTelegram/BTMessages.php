@@ -92,7 +92,7 @@ class BTMessages
     {
         $pesan = [
             'chat_id' => $data['chatID'],
-            'photo' => '',
+            'photo' => $data['photo'],
             'caption' => $data['text'],
             'parse_mode' => 'HTML',
         ];
