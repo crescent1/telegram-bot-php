@@ -163,7 +163,7 @@ class HMessages
             case 'PHOTO' :
 
                 $text = Text::textPhoto();
-                $replyMarkup = BTKeyboards::inlineKeyboardMarkup();
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
 
                 /**
                  * @var array $data
