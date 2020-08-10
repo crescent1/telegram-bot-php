@@ -132,15 +132,8 @@ class HCallbackQuery
 
                 ];
 
-                $data2 = [
-                    'callbackID' => $callbackID,
-                    'text' => 'Edited!'
-                ];
-
-                $answerCallback = BTMessages::answerCallbackQuery($data2);
                 $editText = BTMessages::editMessageText($data);
 
-                $this->botTelegram->answerCallbackQuery($answerCallback);
                 $this->botTelegram->editMessageText($editText);
 
                 break;
