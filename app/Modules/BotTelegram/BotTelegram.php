@@ -105,4 +105,17 @@ class BotTelegram
         ]);
     }
 
+    /**
+     * kirimkan balasan edit pesan
+     *
+     * @param array $editMessageText
+     * @return void
+     */
+    public function editMessageText(array $editMessageText)
+    {
+        $this->http->post('editMessageText', [
+            'form_params' => $editMessageText
+        ]);
+    }
+
 }

@@ -64,57 +64,93 @@ class HCallbackQuery
          */
         $fName = $result['callback_query']['message']['chat']['first_name'];
 
-        if($data === 'BACK') {
+        /**
+         * salah satu cara cek $data
+         * bisa mengunakan fungsi strpos() bila berisi data yang rumit
+         */
+        switch ($data) {
+            case 'BACK':
 
-            /**
-             * siapkan text yang akan dikirim bot
-             */
-            $text = Text::welcome();
+                /**
+                 * siapkan text yang akan dikirim bot
+                 */
+                $text = Text::welcome();
 
-            /**
-             * siapkan keyboard yang akan dikirim bot
-             */
-            $replyMarkup = BTKeyboards::replyKeyboardMarkup();
+                /**
+                 * siapkan keyboard yang akan dikirim bot
+                 */
+                $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
-            /**
-             * @var array $data
-             */
-            $data = [
-                'chatID' => $chatID,
-                'text' => $text,
-                'replyMarkup' => $replyMarkup,
-            ];
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'text' => $text,
+                    'replyMarkup' => $replyMarkup,
+                ];
 
-            /**
-             * @var array $data2
-             */
-            $data2 = [
-                'callbackID' => $callbackID,
-                'text' => 'Back!'
-            ];
+                /**
+                 * @var array $data2
+                 */
+                $data2 = [
+                    'callbackID' => $callbackID,
+                    'text' => 'Back!'
+                ];
 
-            /**
-             * isi data pada setiap parameter yang dibutuhkan
-             */
-            $sendMessage = BTMessages::textMessage($data);
+                /**
+                 * isi data pada setiap parameter yang dibutuhkan
+                 */
+                $sendMessage = BTMessages::textMessage($data);
 
-            /**
-             * siapkan data parameter untuk annswer callback query
-             */
-            $answerCallback = BTMessages::answerCallbackQuery($data2);
+                /**
+                 * siapkan data parameter untuk annswer callback query
+                 */
+                $answerCallback = BTMessages::answerCallbackQuery($data2);
 
-            /**
-             * kirimkan balasan callback query
-             */
-            $this->botTelegram->answerCallbackQuery($answerCallback);
+                /**
+                 * kirimkan balasan callback query
+                 */
+                $this->botTelegram->answerCallbackQuery($answerCallback);
 
-            /**
-             * bot membalas pesan ke user
-             */
-            $this->botTelegram->sendMessage($sendMessage);
+                /**
+                 * bot membalas pesan ke user
+                 */
+                $this->botTelegram->sendMessage($sendMessage);
+                break;
 
+            case 'EDITTEXT':
 
+                $text = Text::editText();
+                $replyMarkup = BTKeyboards::inlineKeyboardEditText();
 
+                $data = [
+                    'chatID' => $chatID,
+                    'messageID' => $messageID,
+                    'text' => $text['text1'],
+                    'replyMarkup' => $replyMarkup,
+
+                ];
+
+                $data2 = [
+                    'callbackID' => $callbackID,
+                    'text' => 'Edited!'
+                ];
+
+                $answerCallback = BTMessages::answerCallbackQuery($data2);
+                $editText = BTMessages::editMessageText($data);
+
+                $this->botTelegram->answerCallbackQuery($answerCallback);
+                $this->botTelegram->editMessageText($editText);
+
+                break;
+
+            case '' :
+                break;
+
+            default:
+                # code...
+                break;
         }
 
     }

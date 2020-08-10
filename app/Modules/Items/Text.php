@@ -68,6 +68,20 @@ class Text
         ];
     }
 
+    /**
+     * set text for edit
+     *
+     * @return array
+     */
+    public static function editText()
+    {
+        return [
+            'text1' => 'Ini adalah text baru!!',
+            'text2' => 'Ini adalah caption baru!'
+        ];
+
+    }
+
 
 
 }

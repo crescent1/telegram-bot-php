@@ -76,8 +76,8 @@ class BTKeyboards
         $buttons = [
             [
                 [
-                    'text' => 'TEST ',
-                    'callback_data' => 'test'
+                    'text' => 'EDIT TEXT ',
+                    'callback_data' => 'EDITTEXT'
 
                 ],
                 [
@@ -85,6 +85,47 @@ class BTKeyboards
                     'callback_data' => 'test'
                 ],
             ],
+            [
+                [
+                    'text' => 'BACK',
+                    'callback_data' => 'back'
+                ],
+
+            ],
+        ];
+
+        /**
+         * tambahkan parameter sesuai kebutuhan, kecuali yang wajib diisi
+         *
+         * @var mixed $inlineKeyboardMarkup
+         */
+        $inlineKeyboardMarkup = [
+            'inline_keyboard' => $buttons,
+        ];
+
+        /**
+         * jadikan data dalam bentuk JSON
+         *
+         * @var string $keyboard
+         */
+        $keyboard = json_encode($inlineKeyboardMarkup);
+
+        return $keyboard;
+    }
+
+    /**
+     * menggunakan inlineKeyboard untuk edit text
+     *
+     * @return string
+     */
+    public static function inlineKeyboardEditText()
+    {
+        /**
+         * atur tampilan dan fungsi tombol sesuai kebutuhan
+         *
+         * @var array
+         */
+        $buttons = [
             [
                 [
                     'text' => 'BACK',

@@ -138,4 +138,28 @@ class BTMessages
 
         return $pesan;
     }
+
+    /**
+     * set parameter edit message text
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function editMessageText(array $data)
+    {
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'message_id' => $data['messageID'],
+            'text' => $data['text'],
+            'parse_mode' => 'HTML',
+        ];
+
+        if ($data['replyMarkup']) {
+
+            $pesan['reply_markup'] = $data['replyMarkup'];
+        }
+
+        return $pesan;
+
+    }
 }
