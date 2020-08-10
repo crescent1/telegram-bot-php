@@ -131,12 +131,12 @@ class HMessages
             case 'REMOVE':
 
                 /**
-                 * siapkan text inlineKeyboard
+                 * siapkan text remove
                  */
                 $text = $this->text->removeKeyboardText();
 
                 /**
-                 * siapkan inline Keyboard
+                 * siapkan remve Keyboard
                  */
                 $replyMarkup = BTKeyboards::replyKeyboardRemove();
 
@@ -161,7 +161,6 @@ class HMessages
                 break;
 
             default:
-
 
                 /**
                  * @var object $data
@@ -198,7 +197,6 @@ class HMessages
 
                     $sendMessage = BTMessages::textMessage($data);
                     $this->botTelegram->sendMessage($sendMessage);
-
 
                 }
 

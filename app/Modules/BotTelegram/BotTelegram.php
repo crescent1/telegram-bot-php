@@ -64,7 +64,23 @@ class BotTelegram
             'form_params' => $sendMessage
         ]);
 
-        return response('Ok', 200);
+        return response('OK', 200);
+    }
+
+    /**
+     * delete pesan yang tidak sesuai/tidak teridentifikasi
+     *
+     * @param array $deleteMessage
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     */
+    public function deleteMessage(array $deleteMessage)
+    {
+        $this->http->post('deleteMessage', [
+            'form_params' => $deleteMessage
+        ]);
+
+        return response('OK', 200);
+
     }
 
 }

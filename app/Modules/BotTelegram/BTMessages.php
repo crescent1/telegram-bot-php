@@ -81,4 +81,21 @@ class BTMessages
         return $pesan;
 
     }
+
+    /**
+     * fungsi untuk menghapus pesan
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function deleteMessage($data)
+    {
+        $message = [
+            'chat_id' => $data['chatID'],
+            'message_id' => $data['messageID'],
+        ];
+
+        return $message;
+
+    }
 }
