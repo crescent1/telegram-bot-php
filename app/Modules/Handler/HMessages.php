@@ -76,7 +76,7 @@ class HMessages
                 $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
                 /**
-                 * @var mixed $data
+                 * @var array $data
                  */
                 $data = [
                     'chatID' => $chatID,
@@ -109,7 +109,7 @@ class HMessages
                 $replyMarkup = BTKeyboards::inlineKeyboardMarkup();
 
                 /**
-                 * @var mixed $data
+                 * @var array $data
                  */
                 $data = [
                     'chatID' => $chatID,
@@ -141,7 +141,7 @@ class HMessages
                 $replyMarkup = BTKeyboards::replyKeyboardRemove();
 
                 /**
-                 * @var mixed $data
+                 * @var array $data
                  */
                 $data = [
                     'chatID' => $chatID,
@@ -187,7 +187,7 @@ class HMessages
                     $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
                     /**
-                     * @var mixed $data
+                     * @var array $data
                      */
                     $data = [
                         'chatID' => $chatID,

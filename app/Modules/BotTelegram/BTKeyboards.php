@@ -32,6 +32,11 @@ class BTKeyboards
                     'text' => 'REMOVE',
                 ],
             ],
+            [
+                [
+                    'text' => 'PHOTO',
+                ]
+            ],
         ];
 
         /**

@@ -40,6 +40,11 @@ class HCallbackQuery
     public function handle(array $result)
     {
         /**
+         * @var string $callbackID
+         */
+        $callbackID = $result['callback_query']['id'];
+
+        /**
          * @var string $chatID
          */
         $chatID = $result['callback_query']['message']['chat']['id'];
@@ -72,7 +77,7 @@ class HCallbackQuery
             $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
             /**
-             * @var mixed $data
+             * @var array $data
              */
             $data = [
                 'chatID' => $chatID,
@@ -81,14 +86,34 @@ class HCallbackQuery
             ];
 
             /**
+             * @var array $data2
+             */
+            $data2 = [
+                'callbackID' => $callbackID,
+                'text' => 'Back!'
+            ];
+
+            /**
              * isi data pada setiap parameter yang dibutuhkan
              */
             $sendMessage = BTMessages::textMessage($data);
 
             /**
+             * siapkan data parameter untuk annswer callback query
+             */
+            $answerCallback = BTMessages::answerCallbackQuery($data2);
+
+            /**
+             * kirimkan balasan callback query
+             */
+            $this->botTelegram->answerCallbackQuery($answerCallback);
+
+            /**
              * bot membalas pesan ke user
              */
             $this->botTelegram->sendMessage($sendMessage);
+
+
 
         }
 

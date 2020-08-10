@@ -56,31 +56,53 @@ class BotTelegram
      * kirim pesan dengan method sendMessage
      *
      * @param array $sendMessage
-     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return void
      */
     public function sendMessage(array $sendMessage)
     {
         $this->http->post('sendMessage', [
             'form_params' => $sendMessage
         ]);
-
-        return response('OK', 200);
     }
 
     /**
      * delete pesan yang tidak sesuai/tidak teridentifikasi
      *
      * @param array $deleteMessage
-     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+     * @return void
      */
     public function deleteMessage(array $deleteMessage)
     {
         $this->http->post('deleteMessage', [
             'form_params' => $deleteMessage
         ]);
+    }
 
-        return response('OK', 200);
+    /**
+     * mengirim pesan dengan menampilkan photo
+     *
+     * @param array $sendPhoto
+     * @return void
+     */
+    public function sendPhoto(array $sendPhoto)
+    {
+        $this->http->post('sendPhoto', [
+            'form_params' => $sendPhoto
+        ]);
+    }
 
+    /**
+     * kirim balasan untuk callback query
+     * lihat detal di https://core.telegram.org/bots/api#callbackquery -> 'NOTE'
+     *
+     * @param array $answerCallbackQuery
+     * @return void
+     */
+    public function answerCallbackQuery(array $answerCallbackQuery)
+    {
+        $this->http->post('answerCallbackQuery',  [
+            'form_params' => $answerCallbackQuery
+        ]);
     }
 
 }

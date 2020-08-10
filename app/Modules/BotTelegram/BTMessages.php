@@ -46,7 +46,7 @@ class BTMessages
      * @param array $result
      * @return string
      */
-    public static function messageCek($result)
+    public static function messageCek(array $result)
     {
         $data = 'OTHER';
 
@@ -61,16 +61,40 @@ class BTMessages
     /**
      * Siapkan data yang akan dikirim oleh bot ke user sesuai parameter yang dibutuhkan
      *
-     * @param mixed $data
+     * @param array $data
      * @return array
      */
-    public static function textMessage($data)
+    public static function textMessage(array $data)
     {
         $pesan = [
             'chat_id' => $data['chatID'],
             'text' => $data['text'],
             'parse_mode' => 'HTML',
             'disable_web_page_preview' => true,
+        ];
+
+        if ($data['replyMarkup']) {
+
+            $pesan['reply_markup'] = $data['replyMarkup'];
+        }
+
+        return $pesan;
+
+    }
+
+    /**
+     * siapkan data sesuai dengan parameter yang dibutuhkan untuk mengirim photo
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function textPhoto(array $data)
+    {
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'photo' => '',
+            'caption' => $data['text'],
+            'parse_mode' => 'HTML',
         ];
 
         if ($data['replyMarkup']) {
@@ -90,12 +114,28 @@ class BTMessages
      */
     public static function deleteMessage($data)
     {
-        $message = [
+        $pesan = [
             'chat_id' => $data['chatID'],
             'message_id' => $data['messageID'],
         ];
 
-        return $message;
+        return $pesan;
 
+    }
+
+    /**
+     * set untuk menjawab callback query
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function answerCallbackQuery(array $data)
+    {
+        $pesan = [
+            'callback_query_id' => $data['callbackID'],
+            'text' => $data['text'],
+        ];
+
+        return $pesan;
     }
 }
