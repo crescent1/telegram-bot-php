@@ -10,7 +10,7 @@ use App\Modules\Items\Text;
 class HCallbackQuery
 {
     /**
-     * set text
+     * set text (not used yet)
      *
      * @var \App\Modules\Items\Text $text
      */
@@ -69,7 +69,7 @@ class HCallbackQuery
             /**
              * siapkan text yang akan dikirim bot
              */
-            $text = $this->text->welcome();
+            $text = Text::welcome();
 
             /**
              * siapkan keyboard yang akan dikirim bot
