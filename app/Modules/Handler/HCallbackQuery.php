@@ -138,7 +138,36 @@ class HCallbackQuery
 
                 break;
 
-            case '' :
+            case 'BACKIM' :
+                /**
+                 * siapkan text inlineKeyboard
+                 */
+                $text = Text::inlineKeyboardText();
+
+                /**
+                 * siapkan inline Keyboard
+                 */
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkup();
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'messageID' => $messageID,
+                    'text' => $text,
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                /**
+                 * isi data pada setiap parameter yang dibutuhkan
+                 */
+                $sendMessage = BTMessages::editMessageText($data);
+
+                /**
+                 * bot membalas pesan ke user
+                 */
+                $this->botTelegram->editMessageText($sendMessage);
                 break;
 
             default:
