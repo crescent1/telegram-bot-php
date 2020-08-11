@@ -143,7 +143,19 @@ class BotTelegram
         $this->http->post('editMessageMedia', [
             'form_params' => $editMessageMedia
         ]);
+    }
 
+    /**
+     * mengirim photo atau video dalam bentuk album range data(2-10)
+     *
+     * @param array $sendMediaGroup
+     * @return void
+     */
+    public function sendMediaGroup(array $sendMediaGroup)
+    {
+        $this->http->post('sendMediaGroup', [
+            'form_params' => $sendMediaGroup
+        ]);
     }
 
 }

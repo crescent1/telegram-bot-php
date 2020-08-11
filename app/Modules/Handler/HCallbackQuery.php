@@ -224,6 +224,53 @@ class HCallbackQuery
 
                 break;
 
+            case 'MEDIAGP' :
+
+                $text = Text::textPhoto();
+                $replyMarkup = BTKeyboards::inlineKeyboardEditText('PHOTO');
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'photo' => $text['photo'],
+                    'text' => $text['text'],
+                ];
+
+                $data2 = [
+                    'chatID' => $chatID,
+                    'text' => $text['text'],
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $sendGroup = BTMessages::sendMediaGroup($data);
+                $this->botTelegram->sendMediaGroup($sendGroup);
+
+                $sendMessage = BTMessages::textMessage($data2);
+                $this->botTelegram->sendMessage($sendMessage);
+
+                break;
+
+            case 'PHOTO' :
+                $text = Text::textPhoto();
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'photo' => $text['photo'],
+                    'text' => $text['text'],
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $sendPhoto = BTMessages::textPhoto($data);
+                $this->botTelegram->sendPhoto($sendPhoto);
+
+            break;
+
             default:
                 # code...
                 break;

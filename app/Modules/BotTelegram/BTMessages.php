@@ -217,4 +217,43 @@ class BTMessages
         return $pesan;
 
     }
+
+    /**
+     * parameter untuk sendMediaGroup
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function sendMediaGroup(array $data)
+    {
+        $mediaPhoto = [
+            [
+                'type' => 'photo',
+                'media' => $data['photo'],
+                'caption' => $data['text'],
+                'parse_mode' => 'HTML'
+            ],
+            [
+                'type' => 'photo',
+                'media' => $data['photo'],
+                'caption' => $data['text'],
+                'parse_mode' => 'HTML'
+            ],
+            [
+                'type' => 'photo',
+                'media' => $data['photo'],
+                'caption' => $data['text'],
+                'parse_mode' => 'HTML'
+            ],
+
+        ];
+
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'media' => json_encode($mediaPhoto), // ubah menjadi JSON
+        ];
+
+        return $pesan;
+
+    }
 }
