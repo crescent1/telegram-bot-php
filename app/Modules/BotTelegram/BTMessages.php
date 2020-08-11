@@ -162,4 +162,26 @@ class BTMessages
         return $pesan;
 
     }
+
+    /**
+     * parameter yang digunakan untuk mengganti hanya keyboard saja
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function editMessageReplyMarkup(array $data)
+    {
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'message_id' => $data['messageID'],
+        ];
+
+        if ($data['replyMarkup']) {
+
+            $pesan['reply_markup'] = $data['replyMarkup'];
+        }
+
+        return $pesan;
+
+    }
 }

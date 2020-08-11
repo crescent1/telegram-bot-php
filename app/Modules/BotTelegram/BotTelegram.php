@@ -118,4 +118,17 @@ class BotTelegram
         ]);
     }
 
+    /**
+     * digunakan hanya untuk mengedit keyboard saja dan tidak mengganti pesan
+     *
+     * @param array $editMessageReplyMarkup
+     * @return void
+     */
+    public function editMessageReplyMarkup(array $editMessageReplyMarkup)
+    {
+        $this->http->post('editMessageReplyMarkup', [
+            'form_params' => $editMessageReplyMarkup
+        ]);
+    }
+
 }

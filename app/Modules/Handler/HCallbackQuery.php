@@ -170,6 +170,20 @@ class HCallbackQuery
                 $this->botTelegram->editMessageText($sendMessage);
                 break;
 
+            case 'EDITRM' :
+
+                $replyMarkup = BTKeyboards::editKeyboardReplyMarkup();
+
+                $data = [
+                    'chatID' => $chatID,
+                    'messageID' => $messageID,
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $editKeyboard = BTMessages::editMessageReplyMarkup($data);
+                $this->botTelegram->editMessageReplyMarkup($editKeyboard);
+
+                break;
             default:
                 # code...
                 break;

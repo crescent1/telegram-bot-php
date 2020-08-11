@@ -81,8 +81,8 @@ class BTKeyboards
 
                 ],
                 [
-                    'text' =>  'TEST',
-                    'callback_data' => 'test'
+                    'text' =>  'EDIT REPLY MARKUP',
+                    'callback_data' => 'EDITRM'
                 ],
             ],
             [
@@ -223,6 +223,55 @@ class BTKeyboards
         $keyboard = json_encode($replyKeyboardRemove);
 
         return $keyboard;
+    }
+
+    /**
+     * tampilan untuk keyboard baru
+     *
+     * @return string
+     */
+    public static function editKeyboardReplyMarkup()
+    {
+        /**
+         * atur tampilan dan fungsi tombol sesuai kebutuhan
+         *
+         * @var array
+         */
+        $buttons = [
+            [
+                [
+                    'text' => 'Hanya Keyboard Berubah!',
+                    'callback_data' => 'ex'
+                ],
+
+            ],
+            [
+                [
+                    'text' => 'BACK',
+                    'callback_data' => 'BACKIM'
+                ],
+
+            ],
+        ];
+
+        /**
+         * tambahkan parameter sesuai kebutuhan, kecuali yang wajib diisi
+         *
+         * @var mixed $inlineKeyboardMarkup
+         */
+        $inlineKeyboardMarkup = [
+            'inline_keyboard' => $buttons,
+        ];
+
+        /**
+         * jadikan data dalam bentuk JSON
+         *
+         * @var string $keyboard
+         */
+        $keyboard = json_encode($inlineKeyboardMarkup);
+
+        return $keyboard;
+
     }
 
 }
