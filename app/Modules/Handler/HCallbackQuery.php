@@ -55,9 +55,9 @@ class HCallbackQuery
         $messageID = $result['callback_query']['message']['message_id'];
 
         /**
-         * @var string $data
+         * @var string $callbackData
          */
-        $data = strtoupper($result['callback_query']['data']);
+        $callbackData = strtoupper($result['callback_query']['data']);
 
         /**
          * @var string $fName
@@ -65,10 +65,28 @@ class HCallbackQuery
         $fName = $result['callback_query']['message']['chat']['first_name'];
 
         /**
+         * @var array $answerData
+         */
+        $answerData = [
+            'callbackID' => $callbackID,
+            'text' => 'OK'
+        ];
+
+        /**
+         * siapkan data parameter untuk annswer callback query
+         */
+        $answerCallback = BTMessages::answerCallbackQuery($answerData);
+
+        /**
+         * kirimkan balasan callback query
+         */
+        $this->botTelegram->answerCallbackQuery($answerCallback);
+
+        /**
          * salah satu cara cek $data
          * bisa mengunakan fungsi strpos() bila berisi data yang rumit
          */
-        switch ($data) {
+        switch ($callbackData) {
             case 'BACK':
 
                 /**
@@ -91,27 +109,9 @@ class HCallbackQuery
                 ];
 
                 /**
-                 * @var array $data2
-                 */
-                $data2 = [
-                    'callbackID' => $callbackID,
-                    'text' => 'Back!'
-                ];
-
-                /**
                  * isi data pada setiap parameter yang dibutuhkan
                  */
                 $sendMessage = BTMessages::textMessage($data);
-
-                /**
-                 * siapkan data parameter untuk annswer callback query
-                 */
-                $answerCallback = BTMessages::answerCallbackQuery($data2);
-
-                /**
-                 * kirimkan balasan callback query
-                 */
-                $this->botTelegram->answerCallbackQuery($answerCallback);
 
                 /**
                  * bot membalas pesan ke user
