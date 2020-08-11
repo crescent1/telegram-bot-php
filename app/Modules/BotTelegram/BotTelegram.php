@@ -131,4 +131,19 @@ class BotTelegram
         ]);
     }
 
+    /**
+     * untuk mengedit media,
+     * bisa berupa photo, video, dokumen dll
+     *
+     * @param array $editMessageMedia
+     * @return void
+     */
+    public function editMessageMedia(array $editMessageMedia)
+    {
+        $this->http->post('editMessageMedia', [
+            'form_params' => $editMessageMedia
+        ]);
+
+    }
+
 }

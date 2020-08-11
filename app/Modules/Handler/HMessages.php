@@ -178,7 +178,6 @@ class HMessages
                 $sendPhoto = BTMessages::textPhoto($data);
                 $this->botTelegram->sendPhoto($sendPhoto);
 
-
                 break;
 
             default:

@@ -184,4 +184,37 @@ class BTMessages
         return $pesan;
 
     }
+
+    /**
+     * parameter untuk mengedit media
+     *
+     * @param array $data
+     * @return array
+     */
+    public static function editMessageMedia(array $data)
+    {
+        /**
+         * contoh mengunakan media photo
+         */
+        $mediaPhoto = [
+            'type' => 'photo',
+            'media' => $data['photo'],
+            'caption' => $data['text'],
+            'parse_mode' => 'HTML'
+        ];
+
+        $pesan = [
+            'chat_id' => $data['chatID'],
+            'message_id' => $data['messageID'],
+            'media' => json_encode($mediaPhoto), // ubah menjadi JSON
+        ];
+
+        if ($data['replyMarkup']) {
+
+            $pesan['reply_markup'] = $data['replyMarkup'];
+        }
+
+        return $pesan;
+
+    }
 }

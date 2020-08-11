@@ -122,7 +122,7 @@ class HCallbackQuery
             case 'EDITTEXT':
 
                 $text = Text::editText();
-                $replyMarkup = BTKeyboards::inlineKeyboardEditText();
+                $replyMarkup = BTKeyboards::inlineKeyboardEditText('BACKIM');
 
                 $data = [
                     'chatID' => $chatID,
@@ -184,6 +184,46 @@ class HCallbackQuery
                 $this->botTelegram->editMessageReplyMarkup($editKeyboard);
 
                 break;
+
+            case 'EDITMD' :
+
+                $text = Text::editTextPhoto();
+                $replyMarkup = BTKeyboards::inlineKeyboardEditText('BACKPH');
+
+                $data = [
+                    'chatID' => $chatID,
+                    'messageID' => $messageID,
+                    'photo' => $text['photo'],
+                    'text' => $text['text'],
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $editMedia = BTMessages::editMessageMedia($data);
+                $this->botTelegram->editMessageMedia($editMedia);
+
+                break;
+
+            case 'BACKPH' :
+
+                $text = Text::textPhoto();
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'messageID' => $messageID,
+                    'photo' => $text['photo'],
+                    'text' => $text['text'],
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                $sendPhoto = BTMessages::editMessageMedia($data);
+                $this->botTelegram->editMessageMedia($sendPhoto);
+
+                break;
+
             default:
                 # code...
                 break;

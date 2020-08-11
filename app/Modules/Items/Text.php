@@ -69,6 +69,23 @@ class Text
     }
 
     /**
+     * siapkan data phto dan caption baru
+     *
+     * @return array
+     */
+    public static function editTextPhoto()
+    {
+        $text = 'Ini Caption yang diedit!';
+        $photo = 'https://images.unsplash.com/photo-1502759683299-cdcd6974244f?auto=format&fit=crop&w=440&h=220&q=60';
+
+        return [
+            'text' => $text,
+            'photo' => $photo,
+        ];
+
+    }
+
+    /**
      * set text for edit
      *
      * @return array

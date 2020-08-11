@@ -116,9 +116,10 @@ class BTKeyboards
     /**
      * menggunakan inlineKeyboard untuk edit text
      *
+     * @param string $callback
      * @return string
      */
-    public static function inlineKeyboardEditText()
+    public static function inlineKeyboardEditText($callback)
     {
         /**
          * atur tampilan dan fungsi tombol sesuai kebutuhan
@@ -129,7 +130,7 @@ class BTKeyboards
             [
                 [
                     'text' => 'BACK',
-                    'callback_data' => 'BACKIM'
+                    'callback_data' => $callback
                 ],
 
             ],
@@ -169,13 +170,13 @@ class BTKeyboards
         $buttons = [
             [
                 [
-                    'text' => 'TEST ',
-                    'callback_data' => 'test'
+                    'text' => 'EDIT MEDIA ',
+                    'callback_data' => 'EDITMD'
 
                 ],
                 [
-                    'text' =>  'TEST',
-                    'callback_data' => 'test'
+                    'text' =>  'MEDIA GROUP',
+                    'callback_data' => 'MEDIAGP'
                 ],
             ],
             [
