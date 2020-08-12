@@ -15,14 +15,29 @@ class HOther
      */
     public function handle(array $result)
     {
-        $chatId = $result['message']['chat']['id'];
-        $messageId = $result['message']['message_id'];
+        /**
+         * @var string $chatID
+         */
+        $chatID = $result['message']['chat']['id'];
 
+        /**
+         * @var string $messageID
+         */
+        $messageID = $result['message']['message_id'];
+
+        /**
+         * @var array $data
+         */
         $data = [
-            'chatID' => $chatId,
-            'messageID' => $messageId,
+            'chatID' => $chatID,
+            'messageID' => $messageID,
         ];
 
+        /**
+         * siapkan parameter yang akan dikirim
+         *
+         * @var array $deleteMessage
+         */
         $deleteMessage = BTMessages::deleteMessage($data);
 
         $botTelegram = new BotTelegram();

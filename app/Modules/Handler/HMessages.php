@@ -14,7 +14,7 @@ class HMessages
     /**
      * set text (not used yet)
      *
-     * @var \App\Modules\Items\Text $text
+     * @var \App\Modules\Items\Text
      */
     private $text;
 
@@ -86,6 +86,7 @@ class HMessages
 
                 /**
                  * isi data pada setiap parameter yang dibutuhkan
+                 *
                  */
                 $sendMessage = BTMessages::textMessage($data);
 
@@ -162,7 +163,14 @@ class HMessages
 
             case 'PHOTO' :
 
+                /**
+                 * siapkan text balasan
+                 */
                 $text = Text::textPhoto();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
 
                 /**
@@ -175,7 +183,14 @@ class HMessages
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapkan parameter yang akan dikirum
+                 */
                 $sendPhoto = BTMessages::textPhoto($data);
+
+                /**
+                 * kirimkan balasan ke user
+                 */
                 $this->botTelegram->sendPhoto($sendPhoto);
 
                 break;
@@ -183,27 +198,40 @@ class HMessages
             default:
 
                 /**
+                 * cek apakakan ada data di database dengan mengukan $chatID
+                 *
                  * @var object $data
                  */
                 $data = ModelPosition::whereChatId($chatID)->first();
 
                 if($data) {
 
+                    /**
+                     * @var string $posisi
+                     */
                     $posisi = $data->posisi;
 
                     switch ($posisi) {
+
                         case 'value':
-                            # code...
+                            # buat sesuai kebutuhan
                             break;
 
                         default:
-                            # code...
+                            # buat sesuai kebutujhan
                             break;
                     }
 
                 } else {
 
+                    /**
+                     * siapkan text bila pesan tidak teridentifikasi
+                     */
                     $text = $this->text->otherText();
+
+                    /**
+                     * siapkan keybard
+                     */
                     $replyMarkup = BTKeyboards::replyKeyboardMarkup();
 
                     /**
@@ -215,7 +243,14 @@ class HMessages
                         'replyMarkup' => $replyMarkup,
                     ];
 
+                    /**
+                     * siapkan parameter
+                     */
                     $sendMessage = BTMessages::textMessage($data);
+
+                    /**
+                     * kirim pesan ke user
+                     */
                     $this->botTelegram->sendMessage($sendMessage);
 
                 }

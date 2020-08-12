@@ -2,7 +2,7 @@
 
 Belajar Bot Telegram dengan menggunakan metode webhook
 
-## install dependency yang diperlukan
+## Install dependency yang diperlukan
 
 `````````````````
 composer install
@@ -16,7 +16,7 @@ Beberapa yang perlu di setting di file .env
 - Setting Telegram Base Uri
 - Setting Telegram Webhook URL
 
-## Jalamkan Migrasi Database
+## Jalankan Migrasi Database
 
 ````````````````````
 php artisan migrate

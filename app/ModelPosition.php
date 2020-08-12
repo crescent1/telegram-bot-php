@@ -13,6 +13,11 @@ class ModelPosition extends Model
      */
     protected $table = 'message_position';
 
+    /**
+     * set data yang boleh di isi kedalam database
+     *
+     * @var array
+     */
     protected $fillable = [
         'chat_id',
         'posisi'

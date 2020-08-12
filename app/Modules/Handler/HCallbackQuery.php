@@ -12,7 +12,7 @@ class HCallbackQuery
     /**
      * set text (not used yet)
      *
-     * @var \App\Modules\Items\Text $text
+     * @var \App\Modules\Items\Text
      */
     private $text;
 
@@ -121,9 +121,19 @@ class HCallbackQuery
 
             case 'EDITTEXT':
 
+                /**
+                 * siapkan text
+                 */
                 $text = Text::editText();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardEditText('BACKIM');
 
+                /**
+                 * @var array $data
+                 */
                 $data = [
                     'chatID' => $chatID,
                     'messageID' => $messageID,
@@ -132,13 +142,20 @@ class HCallbackQuery
 
                 ];
 
+                /**
+                 * siapkan parameter
+                 */
                 $editText = BTMessages::editMessageText($data);
 
+                /**
+                 * kirim pesan edit
+                 */
                 $this->botTelegram->editMessageText($editText);
 
                 break;
 
             case 'BACKIM' :
+
                 /**
                  * siapkan text inlineKeyboard
                  */
@@ -172,24 +189,47 @@ class HCallbackQuery
 
             case 'EDITRM' :
 
+                /**
+                 * siapkan keyboard baru yang akan digunakan
+                 */
                 $replyMarkup = BTKeyboards::editKeyboardReplyMarkup();
 
+                /**
+                 * @var array $data
+                 */
                 $data = [
                     'chatID' => $chatID,
                     'messageID' => $messageID,
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapakan parameter sesuai kebutuhan
+                 */
                 $editKeyboard = BTMessages::editMessageReplyMarkup($data);
+
+                /**
+                 * kirimkan pesan
+                 */
                 $this->botTelegram->editMessageReplyMarkup($editKeyboard);
 
                 break;
 
             case 'EDITMD' :
 
+                /**
+                 * siapkan text
+                 */
                 $text = Text::editTextPhoto();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardEditText('BACKPH');
 
+                /**
+                 * @var array $data
+                 */
                 $data = [
                     'chatID' => $chatID,
                     'messageID' => $messageID,
@@ -198,14 +238,28 @@ class HCallbackQuery
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapkan parameter pesan
+                 */
                 $editMedia = BTMessages::editMessageMedia($data);
+
+                /**
+                 * kirimkan pesan
+                 */
                 $this->botTelegram->editMessageMedia($editMedia);
 
                 break;
 
             case 'BACKPH' :
 
+                /**
+                 * siapkan text
+                 */
                 $text = Text::textPhoto();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
 
                 /**
@@ -219,14 +273,28 @@ class HCallbackQuery
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapkan parameter pesan
+                 */
                 $sendPhoto = BTMessages::editMessageMedia($data);
+
+                /**
+                 * kirimkan pesan
+                 */
                 $this->botTelegram->editMessageMedia($sendPhoto);
 
                 break;
 
             case 'MEDIAGP' :
 
+                /**
+                 * siapkan text
+                 */
                 $text = Text::textPhoto();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardEditText('PHOTO');
 
                 /**
@@ -238,22 +306,48 @@ class HCallbackQuery
                     'text' => $text['text'],
                 ];
 
+                /**
+                 * @var array $data2
+                 */
                 $data2 = [
                     'chatID' => $chatID,
                     'text' => $text['text'],
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapkan parameter untuk mengirim media
+                 */
                 $sendGroup = BTMessages::sendMediaGroup($data);
+
+                /**
+                 * kirimkan pesan berupa mediagrup
+                 * mediagrup hanya bisa menggirimkan media dan caption
+                 */
                 $this->botTelegram->sendMediaGroup($sendGroup);
 
+                /**
+                 * siapkan parameter text message
+                 */
                 $sendMessage = BTMessages::textMessage($data2);
+
+                /**
+                 * kirimkan pesan text
+                 */
                 $this->botTelegram->sendMessage($sendMessage);
 
                 break;
 
             case 'PHOTO' :
+
+                /**
+                 * siapka text
+                 */
                 $text = Text::textPhoto();
+
+                /**
+                 * siapkan keyboard
+                 */
                 $replyMarkup = BTKeyboards::inlineKeyboardMarkupPhoto();
 
                 /**
@@ -266,13 +360,20 @@ class HCallbackQuery
                     'replyMarkup' => $replyMarkup,
                 ];
 
+                /**
+                 * siapkan parameter pesan
+                 */
                 $sendPhoto = BTMessages::textPhoto($data);
+
+                /**
+                 * kirim pesan
+                 */
                 $this->botTelegram->sendPhoto($sendPhoto);
 
-            break;
+                break;
 
             default:
-                # code...
+                # buat sesuai kebutuhan
                 break;
         }
 

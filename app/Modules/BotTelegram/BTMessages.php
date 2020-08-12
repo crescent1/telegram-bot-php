@@ -42,6 +42,7 @@ class BTMessages
 
     /**
      * cek tipe data message. apa hanya berisi text, gambar, atau dokumen
+     * Bisa dikembangkan sesuai kebutuhan, bila memerlukan data berupa gambar, dokumen atau yang lain
      *
      * @param array $result
      * @return string
@@ -112,7 +113,7 @@ class BTMessages
      * @param array $data
      * @return array
      */
-    public static function deleteMessage($data)
+    public static function deleteMessage(array $data)
     {
         $pesan = [
             'chat_id' => $data['chatID'],
