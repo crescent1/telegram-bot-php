@@ -2,6 +2,7 @@
 
 namespace App\Modules\BotTelegram;
 
+
 class BTKeyboards
 {
     /**
@@ -35,6 +36,9 @@ class BTKeyboards
             [
                 [
                     'text' => 'PHOTO',
+                ],
+                [
+                    'text' => 'EMOJI',
                 ]
             ],
         ];
@@ -88,6 +92,60 @@ class BTKeyboards
             [
                 [
                     'text' => 'BACK',
+                    'callback_data' => 'back'
+                ],
+
+            ],
+        ];
+
+        /**
+         * tambahkan parameter sesuai kebutuhan, kecuali yang wajib diisi
+         *
+         * @var mixed $inlineKeyboardMarkup
+         */
+        $inlineKeyboardMarkup = [
+            'inline_keyboard' => $buttons,
+        ];
+
+        /**
+         * jadikan data dalam bentuk JSON
+         *
+         * @var string $keyboard
+         */
+        $keyboard = json_encode($inlineKeyboardMarkup);
+
+        return $keyboard;
+    }
+
+    /**
+     * menggunakan inlineKeyboard dengan emoji
+     *
+     * @param array $emo
+     *
+     * @return string
+     */
+    public static function inlineKeyboardMarkupWithEmoji($emo)
+    {
+        /**
+         * atur tampilan dan fungsi tombol sesuai kebutuhan
+         *
+         * @var array
+         */
+        $buttons = [
+            [
+                [
+                    'text' => $emo['smile'] . ' CONTOH ',
+                    'callback_data' => '-'
+
+                ],
+                [
+                    'text' =>  'CONTOH ' . $emo['dart'],
+                    'callback_data' => '-'
+                ],
+            ],
+            [
+                [
+                    'text' => 'BACK ' . $emo['seru'],
                     'callback_data' => 'back'
                 ],
 

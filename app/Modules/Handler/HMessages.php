@@ -6,6 +6,7 @@ use App\ModelPosition;
 use App\Modules\BotTelegram\BotTelegram;
 use App\Modules\BotTelegram\BTKeyboards;
 use App\Modules\BotTelegram\BTMessages;
+use App\Modules\Items\Emoji;
 use App\Modules\Items\Text;
 use Illuminate\Support\Facades\Log;
 
@@ -193,6 +194,43 @@ class HMessages
                  */
                 $this->botTelegram->sendPhoto($sendPhoto);
 
+                break;
+
+            case 'EMOJI' :
+
+                /**
+                 * psiapkan emoji
+                 */
+                $emo = Emoji::emoji();
+
+                /**
+                 * siapkan contoh text dengan emoji
+                 */
+                $text = Text::emojiText($emo);
+
+                /**
+                 * siapkan keybard dengan emoji
+                 */
+                $replyMarkup = BTKeyboards::inlineKeyboardMarkupWithEmoji($emo);
+
+                /**
+                 * @var array $data
+                 */
+                $data = [
+                    'chatID' => $chatID,
+                    'text' => $text,
+                    'replyMarkup' => $replyMarkup,
+                ];
+
+                /**
+                 * siapkan parameter pesan
+                 */
+                $sendMessage = BTMessages::textMessage($data);
+
+                /**
+                 * kirimkan pesan dengan emoji
+                 */
+                $this->botTelegram->sendMessage($sendMessage);
                 break;
 
             default:

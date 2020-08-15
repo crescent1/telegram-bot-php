@@ -99,6 +99,19 @@ class Text
 
     }
 
+    /**
+     * contoh text menggunakan emoji
+     *
+     * @param array $emo
+     * @return string
+     */
+    public static function emojiText($emo)
+    {
+        $text = $emo['dart'] . ' Ini adalah contoh penggunaan emoji' . $emo['seru'] . ' ' . $emo['smile'];
+
+        return $text;
+    }
+
 
 
 }
