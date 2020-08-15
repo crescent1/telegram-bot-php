@@ -107,7 +107,7 @@ class Text
      */
     public static function emojiText($emo)
     {
-        $text = $emo['dart'] . ' Ini adalah contoh penggunaan emoji' . $emo['seru'] . ' ' . $emo['smile'];
+        $text = $emo['smile'] . ' ' . $emo['dart'] . ' Ini adalah contoh penggunaan emoji' . $emo['seru'];
 
         return $text;
     }
