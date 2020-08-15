@@ -74,7 +74,7 @@ class BTMessages
             'disable_web_page_preview' => true,
         ];
 
-        if ($data['replyMarkup']) {
+        if (isset( $data['replyMarkup'])) {
 
             $pesan['reply_markup'] = $data['replyMarkup'];
         }
@@ -98,7 +98,7 @@ class BTMessages
             'parse_mode' => 'HTML',
         ];
 
-        if ($data['replyMarkup']) {
+        if (isset( $data['replyMarkup'])) {
 
             $pesan['reply_markup'] = $data['replyMarkup'];
         }
@@ -155,7 +155,7 @@ class BTMessages
             'parse_mode' => 'HTML',
         ];
 
-        if ($data['replyMarkup']) {
+        if (isset( $data['replyMarkup'])) {
 
             $pesan['reply_markup'] = $data['replyMarkup'];
         }
@@ -177,7 +177,7 @@ class BTMessages
             'message_id' => $data['messageID'],
         ];
 
-        if ($data['replyMarkup']) {
+        if (isset( $data['replyMarkup'])) {
 
             $pesan['reply_markup'] = $data['replyMarkup'];
         }
@@ -210,7 +210,7 @@ class BTMessages
             'media' => json_encode($mediaPhoto), // ubah menjadi JSON
         ];
 
-        if ($data['replyMarkup']) {
+        if (isset( $data['replyMarkup'])) {
 
             $pesan['reply_markup'] = $data['replyMarkup'];
         }
