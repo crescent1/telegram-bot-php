@@ -1,6 +1,6 @@
 # BELAJAR BOT TELEGRAM
 
-Belajar Bot Telegram dengan menggunakan metode webhook
+Belajar Telegram Bot dengan menggunakan metode webhook
 
 ## Install dependency yang diperlukan
 
