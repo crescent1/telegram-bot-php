@@ -8,17 +8,69 @@ use Illuminate\Support\Facades\Log;
 class BotTelegram
 {
     /**
+     * use guzzle
+     *
      * @var \GuzzleHttp\Client $http
      */
     private $http;
 
+    /**
+     * set base uri
+     *
+     * @var mixed|\Illuminate\Config\Repository
+     */
+    protected $base_uri;
+
 
     public function __construct()
     {
+        $this->base_uri = config('bottelegram.base_uri') . 'bot' . config('bottelegram.token') . '/';
+
         $this->http = new Client([
-            'base_uri' => config('bottelegram.base_uri'),
+            'base_uri' =>  $this->base_uri,
         ]);
 
+    }
+
+    /**
+     * uppdate to .env
+     *
+     * @param string $token
+     * @return void
+     */
+    public function updateENV(string $token)
+    {
+        /**
+         * @var string
+         */
+        $key = 'BOTTELEGRAM_TOKEN=';
+
+        /**
+         * @var string
+         */
+        $oldValue = config('bottelegram.token');
+
+        /**
+         * @var string
+         */
+        $newValue = $token;
+
+        /**
+         * @var string $path
+         */
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+
+            if($oldValue == '') {
+
+                $oldValue = 'old';
+            }
+
+            file_put_contents($path, str_replace(
+                $key . $oldValue, $key . $newValue, [file_get_contents($path)]
+            ));
+        }
     }
 
     /**
