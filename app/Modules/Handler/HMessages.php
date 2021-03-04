@@ -2,7 +2,7 @@
 
 namespace App\Modules\Handler;
 
-use App\ModelPosition;
+use App\Models\ModelPosition;
 use App\Modules\BotTelegram\BotTelegram;
 use App\Modules\BotTelegram\BTKeyboards;
 use App\Modules\BotTelegram\BTMessages;
